@@ -681,7 +681,7 @@ namespace Yarn.Unity
             //Dialogue.HandlerExecutionType HandleLine(Line line) => dialogueUI.RunLine(line, this, continueAction);
             Dialogue.HandlerExecutionType HandleLine(Line line)
             {
-                Debug.Log("Line#: " + line.ID);
+                currentLineNumber = line.ID;
                 return dialogueUI.RunLine(line, this, continueAction);
             }
 
