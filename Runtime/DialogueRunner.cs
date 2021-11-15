@@ -91,6 +91,12 @@ namespace Yarn.Unity
         public bool IsDialogueRunning { get; set; }
 
         /// <summary>
+        /// The current line number. This field is updated when a line
+        /// is run.
+        /// </summary>
+        public string currentLineNumber = "";
+
+        /// <summary>
         /// A type of <see cref="UnityEvent"/> that takes a single string
         /// parameter. 
         /// </summary>
@@ -672,7 +678,12 @@ namespace Yarn.Unity
             }
 
             /// Forward the line to the dialogue UI.
-            Dialogue.HandlerExecutionType HandleLine(Line line) => dialogueUI.RunLine(line, this, continueAction);
+            //Dialogue.HandlerExecutionType HandleLine(Line line) => dialogueUI.RunLine(line, this, continueAction);
+            Dialogue.HandlerExecutionType HandleLine(Line line)
+            {
+                Debug.Log("Line#: " + line.ID);
+                return dialogueUI.RunLine(line, this, continueAction);
+            }
 
             /// Indicates to the DialogueRunner that the user has selected an option
             void SelectedOption(int obj)
